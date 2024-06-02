@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegRequest extends FormRequest
+class CreateProductReqest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,19 +22,22 @@ class RegRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'number' => 'required|unique:users',
+            'chapterId' => 'required',
+            'categoryId' => 'required',
             'name' => 'required',
-            'password' => 'required|min:6',
-            'password_repeat' => 'required|same:password',
+            'price' => 'required',
+            'type' => 'required',
+            'description' => 'required',
+            'gallery' => 'required',
+            'gallery.*' => 'required',
+            'address' => 'required',
+            'connectMethod' => 'required',
         ];
     }
     public function messages(): array
     {
         return [
-            'required' => 'Это поле обязательно для заполнения',
-            'min' => 'Длина пароля минимум 6 символов',
-            'unique' => 'Номер уже занят другим пользователем',
-            'same' => 'Пароли не совпадают',
+            'required'=>'Это поле обязательно для заполнения'
         ];
     }
 }

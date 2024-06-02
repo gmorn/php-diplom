@@ -1,37 +1,37 @@
 @if(!isset($textarea))
-  <div class="main-input-container">
-    <input 
-      placeholder="{{$placeholder}}"
-      type="{{$type}}" 
-      name="{{$name}}" 
-      class="main-input" 
-      id="input{{$name}}" 
-      value="{{old($name, '')}}"
-    >
-    @error($name) 
-      <div class="invalid-feedback">
-        {{$message}}
-      </div>    
-    @enderror
-  </div>
+    <div class="main-input-container">
+        <input
+            placeholder="{{$placeholder}}"
+            type="{{$type}}"
+            name="{{$name}}"
+            class="main-input"
+            id="input{{$name}}"
+            value="{{ old($name, $value ?? '') }}"
+        >
+        @error($name)
+        <div class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
 @endif
 
-{{-- @isset($textarea)
-  <div class="main-input-container">
-    <textarea 
-      placeholder="{{$placeholder}}"
-      class="main-textarea"
-      name="{{$name}}"
-      aria-describedby="validation{{$name}}"
-      id="textarea{{$name}}" 
-    >{{old($name, '')}}</textarea>
-    @error($name) 
-      <div id="validation{{$name}}" class="invalid-feedback">
-        {{$message}}
-      </div>    
-    @enderror
-  </div>
-@endisset --}}
+@isset($textarea)
+    <div class="main-input-container">
+    <textarea
+        placeholder="{{$placeholder}}"
+        class="main-input"
+        name="{{$name}}"
+        aria-describedby="validation{{$name}}"
+        id="textarea{{$name}}"
+    >{{ old($name, $value ?? '') }}</textarea>
+        @error($name)
+        <div id="validation{{$name}}" class="invalid-feedback">
+            {{$message}}
+        </div>
+        @enderror
+    </div>
+@endisset
 
 <style>
   .main-input-container {
@@ -49,6 +49,7 @@
     border-radius: 12px;
     border: none;
     outline: none;
+      resize: none;
   }
 
   .main-input::placeholder {

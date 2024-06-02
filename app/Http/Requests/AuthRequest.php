@@ -25,11 +25,11 @@ class AuthRequest extends FormRequest
     {
         return [
             'number' => 'required|exists:users,number',
-            'password' => ['required', new CheckPasswordRule(request('password'))],
+            'password' => ['required', new CheckPasswordRule(request('number'))],
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'required' => 'Это поле обязательно для заполнения',

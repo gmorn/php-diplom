@@ -1,6 +1,12 @@
 @section('styles')
     @parent
     <style>
+        html {
+            scrollbar-width: none; /* Firefox */
+        }
+        body::-webkit-scrollbar {
+            display: none; /* Chrome, Safari, Edge, Opera */
+        }
         :root {
             --bg-color: #F8F8FF;
             --text-color: #303030;
@@ -23,7 +29,11 @@
             width: 1250px;
             margin: 0 auto;
         }
-</style>
+        h3 {
+            font-weight: 600;
+            font-size: 22px;
+        }
+    </style>
 @endsection
 
 <!DOCTYPE html>
